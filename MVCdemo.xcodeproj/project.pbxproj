@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F7580AA21CD9BA8A00D1999F /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7580AA11CD9BA8A00D1999F /* TableViewCell.m */; };
 		F7C75A871CD86A900074C9A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C75A861CD86A900074C9A2 /* main.m */; };
 		F7C75A8A1CD86A900074C9A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C75A891CD86A900074C9A2 /* AppDelegate.m */; };
 		F7C75A8D1CD86A900074C9A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C75A8C1CD86A900074C9A2 /* ViewController.m */; };
 		F7C75A901CD86A900074C9A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C75A8E1CD86A900074C9A2 /* Main.storyboard */; };
 		F7C75A921CD86A900074C9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C75A911CD86A900074C9A2 /* Assets.xcassets */; };
 		F7C75A951CD86A900074C9A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C75A931CD86A900074C9A2 /* LaunchScreen.storyboard */; };
+		F7C75A9E1CD86AAB0074C9A2 /* EmpolyeeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C75A9D1CD86AAB0074C9A2 /* EmpolyeeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F7580AA01CD9BA8A00D1999F /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		F7580AA11CD9BA8A00D1999F /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		F7C75A821CD86A900074C9A2 /* MVCdemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCdemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C75A861CD86A900074C9A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F7C75A881CD86A900074C9A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		F7C75A911CD86A900074C9A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7C75A941CD86A900074C9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7C75A961CD86A900074C9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7C75A9C1CD86AAB0074C9A2 /* EmpolyeeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmpolyeeModel.h; sourceTree = "<group>"; };
+		F7C75A9D1CD86AAB0074C9A2 /* EmpolyeeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmpolyeeModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,10 @@
 				F7C75A931CD86A900074C9A2 /* LaunchScreen.storyboard */,
 				F7C75A961CD86A900074C9A2 /* Info.plist */,
 				F7C75A851CD86A900074C9A2 /* Supporting Files */,
+				F7C75A9C1CD86AAB0074C9A2 /* EmpolyeeModel.h */,
+				F7C75A9D1CD86AAB0074C9A2 /* EmpolyeeModel.m */,
+				F7580AA01CD9BA8A00D1999F /* TableViewCell.h */,
+				F7580AA11CD9BA8A00D1999F /* TableViewCell.m */,
 			);
 			path = MVCdemo;
 			sourceTree = "<group>";
@@ -152,6 +162,8 @@
 				F7C75A8D1CD86A900074C9A2 /* ViewController.m in Sources */,
 				F7C75A8A1CD86A900074C9A2 /* AppDelegate.m in Sources */,
 				F7C75A871CD86A900074C9A2 /* main.m in Sources */,
+				F7580AA21CD9BA8A00D1999F /* TableViewCell.m in Sources */,
+				F7C75A9E1CD86AAB0074C9A2 /* EmpolyeeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +312,7 @@
 				F7C75A9B1CD86A900074C9A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

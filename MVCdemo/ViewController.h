@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EmpolyeeModel.h"
+
 @interface ViewController : UIViewController
 
-
+@property(nonatomic,strong)NSMutableArray *modelObjects;
 @end
 
