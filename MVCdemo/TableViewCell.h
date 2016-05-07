@@ -16,5 +16,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *Empdesignation;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIButton *editBtn;
--(void)unhideButtons;
 @end

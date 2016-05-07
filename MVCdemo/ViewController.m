@@ -8,9 +8,12 @@
 
 #import "ViewController.h"
 #import "TableViewCell.h"
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property(nonatomic,strong)NSIndexPath* selectedpath;
+@property(nonatomic,assign)BOOL flag;
 @end
 
 @implementation ViewController
@@ -18,18 +21,74 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.modelObjects=[[NSMutableArray alloc] init];
+    //self.modelObjects=[[NSMutableArray alloc] init];
     
-    EmpolyeeModel* ragh=[[EmpolyeeModel alloc] initWithName:@"rahgavendra" Designation:@"IOS"];
-     EmpolyeeModel* bhaskar=[[EmpolyeeModel alloc] initWithName:@"bhaskar" Designation:@"IOS"];
-     EmpolyeeModel* meha=[[EmpolyeeModel alloc] initWithName:@"meha" Designation:@"IOS"];
-     EmpolyeeModel* bhagyashre=[[EmpolyeeModel alloc] initWithName:@"bhagyashre" Designation:@"IOS"];
-    EmpolyeeModel* harish=[[EmpolyeeModel alloc] initWithName:@"harish" Designation:@"IOS"];
+//   NSArray* array =[self fetchForCheck];
+//    
+//   
+//    NSManagedObjectContext* context=[self getContext];
+//    NSManagedObject* emp=[NSEntityDescription insertNewObjectForEntityForName:@"Employee" inManagedObjectContext:context];
+//    [emp setValue:@"rahgavendra" forKey:@"name"];
+//    [emp setValue:@"IOS" forKey:@"designation"];
     
-    [self.modelObjects addObjectsFromArray:@[ragh,bhaskar,meha,bhagyashre,harish]];
+    
+//    for (NSManagedObject* empLocal in array) {
+//        
+//        if ([[empLocal valueForKey:@"name"] isEqualToString:[emp valueForKey:@"name"]]) {
+//            self.flag=true;
+//        }else{
+//            self.flag=false;
+//        }
+//        
+//        
+//    }
+    
+    
+   
+    
+        [self fetchData];
+    
+//    else{
+//        NSError* error=nil;
+//        if ([context save:&error]) {
+//            [self fetchData];
+//        }
+//    }
+    
+    
+    
+    
+    
+//    EmpolyeeModel* ragh=[[EmpolyeeModel alloc] initWithName:@"rahgavendra" Designation:@"IOS"];
+//     EmpolyeeModel* bhaskar=[[EmpolyeeModel alloc] initWithName:@"bhaskar" Designation:@"IOS"];
+//     EmpolyeeModel* meha=[[EmpolyeeModel alloc] initWithName:@"meha" Designation:@"IOS"];
+//     EmpolyeeModel* bhagyashre=[[EmpolyeeModel alloc] initWithName:@"bhagyashre" Designation:@"IOS"];
+//    EmpolyeeModel* harish=[[EmpolyeeModel alloc] initWithName:@"harish" Designation:@"IOS"];
+//    
+//    [self.modelObjects addObjectsFromArray:@[ragh,bhaskar,meha,bhagyashre,harish]];
 
     
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)fetchData{
+    
+    NSManagedObjectContext* context=[self getContext];
+    NSFetchRequest* req=[[NSFetchRequest alloc] initWithEntityName:@"Employee"];
+    NSError* error=nil;
+    
+    self.modelObjects=[[NSMutableArray alloc] initWithArray:[context executeFetchRequest:req error:&error]];
+    [self.tableview reloadData];
+   // [self.modelObjects addObjectsFromArray:];
+}
+
+-(NSArray*)fetchForCheck{
+    NSManagedObjectContext* context=[self getContext];
+    NSFetchRequest* req=[[NSFetchRequest alloc] initWithEntityName:@"Employee"];
+    NSError* error=nil;
+    
+    NSArray* array=[[NSMutableArray alloc] initWithArray:[context executeFetchRequest:req error:&error]];
+    return array;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,11 +122,20 @@
         UITextField* des = [controller.textFields objectAtIndex:1];
         
         
-        EmpolyeeModel* model = [[EmpolyeeModel alloc] initWithName:name.text Designation:des.text];
-        [self.modelObjects addObject:model];
+        NSManagedObjectContext* context=[self getContext];
+        NSManagedObject* emp=[NSEntityDescription insertNewObjectForEntityForName:@"Employee" inManagedObjectContext:context];
+        [emp setValue:name.text forKey:@"name"];
+        [emp setValue:des.text forKey:@"designation"];
+        NSError* error=nil;
         
-        [self.tableview reloadData];
-
+        if ([context save:&error]) {
+            [self fetchData];
+        }
+//        EmpolyeeModel* model = [[EmpolyeeModel alloc] initWithName:name.text Designation:des.text];
+//        [self.modelObjects addObject:model];
+//        
+//        [self.tableview reloadData];
+//
         
         
         
@@ -90,10 +158,10 @@
     
     TableViewCell* cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    EmpolyeeModel *model=self.modelObjects[indexPath.row];
+    NSManagedObject *model=self.modelObjects[indexPath.row];
     
-    cell.empName.text=model.NameEmp;
-    cell.Empdesignation.text=model.designationEmp;
+    cell.empName.text=[model valueForKey:@"name"];
+    cell.Empdesignation.text=[model valueForKey:@"designation"];
     return cell;
     
     
@@ -103,19 +171,19 @@
 
 - (IBAction)edit:(UIButton*)sender {
     
-    EmpolyeeModel* model = self.modelObjects[self.selectedpath.row];
+    NSManagedObject* model = self.modelObjects[self.selectedpath.row];
     
     
     UIAlertController* controller=[UIAlertController alertControllerWithTitle:@"Add Employee" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     
     
     [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.text=model.NameEmp;
+        textField.text=[model valueForKey:@"name"];
         
     }];
     
     [controller addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.text=model.designationEmp;
+        textField.text=[model valueForKey:@"designation"];
     }];
     
     
@@ -128,13 +196,21 @@
         
          NSIndexPath *indexPath = [self.tableview indexPathForCell:(TableViewCell *)sender.superview.superview];
         
+        [model setValue:name.text forKey:@"name"];
+        [model setValue:des.text forKey:@"designation"];
         
-        EmpolyeeModel* model = [[EmpolyeeModel alloc] initWithName:name.text Designation:des.text];
-        [self.modelObjects replaceObjectAtIndex:indexPath.row withObject:model];
+        NSManagedObjectContext* context=[self getContext];
+        NSError* error=nil;
+        [context save:&error];
+        
+        
+//        EmpolyeeModel* model = [[EmpolyeeModel alloc] initWithName:name.text Designation:des.text];
+//        [self.modelObjects replaceObjectAtIndex:indexPath.row withObject:model];
         TableViewCell* cell = [self.tableview cellForRowAtIndexPath:indexPath];
         cell.editBtn.hidden=YES;
         cell.deleteBtn.hidden=YES;
-        [self.tableview reloadData];
+        [self fetchData];
+        //[self.tableview reloadData];
        
         
         
@@ -150,6 +226,12 @@
     
     
      NSIndexPath *indexPath = [self.tableview indexPathForCell:(TableViewCell *)sender.superview.superview];
+    
+    NSManagedObjectContext *context=[self getContext];
+    [context deleteObject:[self.modelObjects objectAtIndex:indexPath.row]];
+    NSError* error=nil;
+    [context save:&error];
+    
     [self.modelObjects removeObjectAtIndex:indexPath.row];
     TableViewCell* cell = [self.tableview cellForRowAtIndexPath:indexPath];
     cell.editBtn.hidden=YES;
@@ -179,6 +261,12 @@
     cell.deleteBtn.hidden=YES;
 }
 
+
+-(NSManagedObjectContext*)getContext{
+    AppDelegate* app=[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* context=[app managedObjectContext];
+    return context;
+}
 
 
 @end

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F7580AA21CD9BA8A00D1999F /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7580AA11CD9BA8A00D1999F /* TableViewCell.m */; };
+		F7667D471CDDB4AF003110D1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7667D461CDDB4AF003110D1 /* CoreData.framework */; };
+		F7667D4A1CDDB50C003110D1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7667D481CDDB50C003110D1 /* Model.xcdatamodeld */; };
 		F7C75A871CD86A900074C9A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C75A861CD86A900074C9A2 /* main.m */; };
 		F7C75A8A1CD86A900074C9A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C75A891CD86A900074C9A2 /* AppDelegate.m */; };
 		F7C75A8D1CD86A900074C9A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C75A8C1CD86A900074C9A2 /* ViewController.m */; };
@@ -20,6 +22,8 @@
 /* Begin PBXFileReference section */
 		F7580AA01CD9BA8A00D1999F /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		F7580AA11CD9BA8A00D1999F /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		F7667D461CDDB4AF003110D1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F7667D491CDDB50C003110D1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F7C75A821CD86A900074C9A2 /* MVCdemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCdemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C75A861CD86A900074C9A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F7C75A881CD86A900074C9A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7667D471CDDB4AF003110D1 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +53,7 @@
 		F7C75A791CD86A900074C9A2 = {
 			isa = PBXGroup;
 			children = (
+				F7667D461CDDB4AF003110D1 /* CoreData.framework */,
 				F7C75A841CD86A900074C9A2 /* MVCdemo */,
 				F7C75A831CD86A900074C9A2 /* Products */,
 			);
@@ -77,6 +83,7 @@
 				F7C75A9D1CD86AAB0074C9A2 /* EmpolyeeModel.m */,
 				F7580AA01CD9BA8A00D1999F /* TableViewCell.h */,
 				F7580AA11CD9BA8A00D1999F /* TableViewCell.m */,
+				F7667D481CDDB50C003110D1 /* Model.xcdatamodeld */,
 			);
 			path = MVCdemo;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 				F7C75A871CD86A900074C9A2 /* main.m in Sources */,
 				F7580AA21CD9BA8A00D1999F /* TableViewCell.m in Sources */,
 				F7C75A9E1CD86AAB0074C9A2 /* EmpolyeeModel.m in Sources */,
+				F7667D4A1CDDB50C003110D1 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +323,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F7667D481CDDB50C003110D1 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F7667D491CDDB50C003110D1 /* Model.xcdatamodel */,
+			);
+			currentVersion = F7667D491CDDB50C003110D1 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F7C75A7A1CD86A900074C9A2 /* Project object */;
 }
